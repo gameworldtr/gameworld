@@ -1,0 +1,594 @@
+/* ===================================
+   MAZE GAME - SCOPED STYLES ONLY
+   Force font inheritance for Maze Game
+   =================================== */
+
+.labyrinth-screen-container,
+.question-screen-container,
+.finished-screen-container {
+  font-family: 'Georgia', serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #f0f0f0 !important;
+  line-height: 1.5 !important;
+  margin: 0;
+  background-color: #1a1a1a;
+}
+
+.labyrinth-screen-container *,
+.question-screen-container *,
+.finished-screen-container * {
+  font-family: inherit !important;
+}
+
+/* --- Player Scoreboard - Fixed Position --- */
+.player-scoreboard {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(51, 51, 51, 0.95));
+    padding: 20px;
+    border-radius: 15px;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 204, 0, 0.3);
+    min-width: 200px;
+}
+
+.player-score {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.player-score.active {
+    background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 153, 0, 0.2));
+    border-color: #ffcc00;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.player-avatar {
+    font-size: 2em;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.player-name {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ffcc00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.player-points {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.player-stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.player-points.correct {
+    color: #4ade80;
+}
+
+.player-points.wrong {
+    color: #f87171;
+}
+
+/* --- Screen Containers --- */
+.labyrinth-screen-container,
+.question-screen-container,
+.finished-screen-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.labyrinth-screen-container {
+    background-color: #1a1a1a;
+}
+
+.question-screen-container {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--bg-image);
+    background-size: cover;
+    background-position: center;
+}
+
+.finished-screen-container {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), var(--bg-image);
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- Labyrinth Map --- */
+.character-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.character-image {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8));
+    animation: characterFloat 2s ease-in-out infinite;
+}
+
+.character-image.male {
+    animation-delay: 0s;
+}
+
+.character-image.female {
+    animation-delay: 1s;
+}
+
+@keyframes characterFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.labyrinth-content {
+    max-width: 1000px;
+    width: 90%;
+    position: relative;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.labyrinth-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.labyrinth-title {
+    font-size: 2.5em;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.labyrinth-doors-map {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    margin: 0 auto;
+    border: 3px solid #4a2c00;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), var(--map-bg-image);
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+
+.door-position {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.labyrinth-category-info-container {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.labyrinth-category-info-text {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+/* --- Door Component --- */
+.door-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.6s ease;
+}
+
+.door-button:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.door-button.normal {
+    --door-width: 100px;
+    --door-height: 140px;
+    --icon-size: 28px;
+    --font-size: 13px;
+}
+
+.door-button:not(.is-completed):not(.is-disappearing):hover {
+    transform: scale(1.05);
+}
+
+.door-button.is-disappearing {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.door-container {
+    width: var(--door-width);
+    height: var(--door-height);
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.door-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.door-panel-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.8s ease-in-out, opacity 1s ease-in-out;
+    z-index: 2;
+    transform-origin: left center;
+}
+
+.door-panel-left.door-open {
+    transform: rotateY(-120deg);
+    opacity: 0;
+}
+
+.door-arch-decoration {
+    display: none;
+}
+
+.door-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: var(--icon-size);
+    z-index: 3;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.door-label-container {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.door-label-text p {
+    margin: 0;
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #f7d04d;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.door-candle-left, .door-candle-right {
+    position: absolute;
+    font-size: 18px;
+    bottom: -5px;
+    filter: drop-shadow(0 0 5px orange);
+}
+
+.door-candle-left { left: -18px; }
+.door-candle-right { right: -18px; }
+
+/* --- Question Screen --- */
+.question-popup {
+    padding: 0px;
+    padding-bottom: 0;
+    margin-top: 125px;
+    border-radius: 15px;
+    max-width: 62.5%;
+    width: 90%;
+    text-align: center;
+}
+
+.question-category-badge-container {
+    margin-bottom: 20px;
+}
+
+.question-category-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    border: 2px solid #ffcc00;
+    border-radius: 20px;
+}
+
+.question-category-title {
+    margin: 0;
+    font-size: 1.5em;
+    color: #ffcc00;
+}
+
+.question-text {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.question-options-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.answer-door-button[style*="background-image"] {
+  background-color: transparent !important;
+}.question-screen-container .question-text,
+.question-screen-container .question-category-title {
+  color: white !important;
+}
+
+/* --- Answer Door Component --- */
+.answer-door-button {
+  position: relative;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  width: 340px;
+  height: 500px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid transparent;
+}
+
+.answer-door-button.hoverable:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
+.answer-door-button.disabled-unselected {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.answer-door-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease;
+  z-index: 1;
+  background: transparent !important; /* Force transparent */
+  pointer-events: none;
+}
+
+.answer-door-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 300px;
+  padding-top: 400px;
+  height: 100%;
+  z-index: 2;
+  gap: 10px;
+}
+
+.answer-door-mini-container {
+    display: none;
+}
+
+.answer-door-letter-badge {
+    display: none;
+}
+
+.answer-door-option-text {
+  flex-grow: 0;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  color: white !important;
+  text-shadow: 2px 2px 4px #000;
+  text-align: center;
+  line-height: 1.3;
+  background-color: rgba(40, 30, 20, 0.9) !important;
+  border-radius: 6px;
+  margin: 0 auto;
+  border: 2px solid rgba(139, 69, 19, 0.9) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  min-height: 50px;
+  max-height: 90px;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.answer-door-result-text {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.answer-door-result-text p {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+  color: white !important;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.result-icon-large {
+    font-size: 3em;
+}
+
+.answer-door-opening-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 100, 0.5) 0%, rgba(255, 255, 100, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+    animation: pulseLight 1s infinite alternate;
+}
+
+@keyframes pulseLight {
+    from { opacity: 0.5; }
+    to { opacity: 0.8; }
+}
+
+/* --- Feedback Messages and Continue Button --- */
+.correct-message {
+    display: none;
+    background-color: #16a34a;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.wrong-message {
+    display: none;
+    background-color: #dc2626;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.continue-button-container {
+    position: relative;
+}
+
+.continue-button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #ffcc00;
+    color: #333;
+    border: 2px solid #cc9900;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    position: absolute;
+    bottom: -100%;
+    right: -200px;
+}
+
+.continue-button:hover {
+    background-color: #ffdd44;
+    transform: translateY(-1px);
+}
+
+/* --- Finished Screen --- */
+.finished-popup {
+    background-color: rgba(10, 10, 10, 0.9);
+    padding: 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 255, 0, 0.5);
+}
+
+.finished-title {
+    font-size: 3em;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.finished-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.finished-winner {
+    font-size: 2em;
+    color: #ffd700;
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.finished-score {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: #f0f0f0;
+}
+
+.finished-restart-button {
+    padding: 15px 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    background-color: #cc9900;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px #806000;
+    transition: background-color 0.1s, transform 0.1s, box-shadow 0.1s;
+}
+
+.finished-restart-button:hover {
+    background-color: #e6b800;
+}
+
+.finished-restart-button:active {
+    background-color: #cc9900;
+    transform: translateY(2px);
+    box-shadow: 0 2px #806000;
+}

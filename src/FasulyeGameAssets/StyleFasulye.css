@@ -1,0 +1,695 @@
+/* ===================================
+   FASULYE GAME - SCOPED STYLES
+   =================================== */
+
+/* --- Global Container --- */
+.fasulye-game-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* --- Start Screen --- */
+.fasulye-start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #e0f2fe, #7dd3fc);
+  padding: 1rem;
+}
+
+.fasulye-start-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.fasulye-start-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 42rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.fasulye-players-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.fasulye-player-card {
+  height: 20rem;
+  width: 24rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  color: white;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.fasulye-input-label {
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+}
+
+.fasulye-input-field {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background-color: transparent;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.fasulye-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fasulye-start-button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.fasulye-start-button:hover {
+  background-color: #4338ca;
+}
+
+.fasulye-start-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Main Game Screen --- */
+.fasulye-game-screen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --- Menu Button --- */
+.fasulye-menu-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(55, 65, 81, 0.9);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 50;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.fasulye-menu-button:hover {
+  background: rgba(75, 85, 99, 0.9);
+}
+
+/* --- Game Header --- */
+.fasulye-header {
+  width: 100%;
+  max-width: 96rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.fasulye-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.fasulye-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.fasulye-turn-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  background-color: #e11d48;
+  color: white;
+}
+
+.fasulye-turn-badge div {
+  margin: 0;
+}
+
+/* --- HUD Pills --- */
+.fasulye-hud-pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.75rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.fasulye-hud-red {
+  background-color: #991b1b;
+}
+
+.fasulye-hud-blue {
+  background-color: #1e3a8a;
+}
+
+.fasulye-hud-name {
+  font-weight: 700;
+}
+
+.fasulye-hud-stats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* --- Control Buttons --- */
+.fasulye-control-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+.fasulye-reset-button {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  color: #334155;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-reset-button:hover {
+  background-color: #f1f5f9;
+}
+
+.fasulye-end-button {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  color: #e11d48;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-end-button:hover {
+  background-color: #fff1f2;
+}
+
+/* --- Legend --- */
+.fasulye-legend {
+  width: 100%;
+  max-width: 96rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .fasulye-legend {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fasulye-legend {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.fasulye-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.fasulye-legend-color {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fasulye-legend-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.fasulye-legend-label {
+  font-weight: 500;
+}
+
+.fasulye-legend-info {
+  font-size: 0.625rem;
+  opacity: 0.7;
+}
+
+/* --- Game Container --- */
+.fasulye-game-container {
+  position: relative;
+  width: 100%;
+  max-width: 96rem;
+  height: 780px;
+  margin: 0 auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Power Bar --- */
+.fasulye-power-bar-wrapper {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  width: 10rem;
+  z-index: 40;
+}
+
+.fasulye-power-label {
+  margin-bottom: 0.25rem;
+  font-size: 0.625rem;
+  color: #334155;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: fit-content;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.fasulye-power-bar-outer {
+  height: 0.75rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #cbd5e1;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.fasulye-power-bar-inner {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(to right, #34d399, #fbbf24, #f87171);
+  transition: width 0.1s;
+}
+
+/* --- Play Area --- */
+.fasulye-play-area {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255, 209, 220, 0.8);
+}
+
+/* --- Walls --- */
+.fasulye-wall {
+  position: absolute;
+  background-color: #fda4af;
+  z-index: 20;
+}
+
+.fasulye-wall-left {
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.fasulye-wall-right {
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+/* --- Launch Areas --- */
+.fasulye-launch-area {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  inset: -0.25rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.fasulye-launch-left {
+  left: -3rem;
+  transform: rotate(10deg) scale(1.1);
+}
+
+.fasulye-launch-right {
+  left: 82%;  /* ← This is causing the issue */
+  transform: rotate(-10deg);
+}
+
+/* --- Ball --- */
+.fasulye-ball {
+  position: absolute;
+  z-index: 30;
+  transform: scale(1.25);
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- Note --- */
+.fasulye-note {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 0.875rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+/* --- Trajectory Preview --- */
+.fasulye-trajectory {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* --- Question Modal --- */
+.fasulye-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.fasulye-modal {
+  width: 100%;
+  max-width: 56rem;
+  border-radius: 1rem;
+  border: 8px solid;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* --- Timer --- */
+.fasulye-timer-wrapper {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.fasulye-timer-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.fasulye-timer-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.fasulye-timer-warning {
+  color: #dc2626;
+}
+
+.fasulye-timer-normal {
+  color: #1f2937;
+}
+
+/* --- Question Content --- */
+.fasulye-question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fasulye-question-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.fasulye-question-shape {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fasulye-question-text {
+  margin-top: 0.75rem;
+  color: #1e293b;
+}
+
+.fasulye-question-options {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.fasulye-option-button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-option-button:hover:not(:disabled) {
+  background-color: #f8fafc;
+}
+
+.fasulye-option-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Matching Questions --- */
+.fasulye-matching-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.fasulye-matching-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fasulye-matching-item {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.fasulye-matching-selected {
+  background-color: #fef08a;
+}
+
+.fasulye-matching-paired {
+  background-color: #d1d5db;
+  opacity: 0.7;
+}
+
+.fasulye-matching-item:hover:not(.fasulye-matching-selected):not(.fasulye-matching-paired) {
+  background-color: #f8fafc;
+}
+
+.fasulye-matching-submit {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-matching-submit:hover {
+  background-color: #4338ca;
+}
+
+/* --- Feedback --- */
+.fasulye-feedback {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.fasulye-feedback-correct {
+  color: #059669;
+}
+
+.fasulye-feedback-wrong {
+  color: #dc2626;
+}
+
+/* --- End Screen --- */
+.fasulye-end-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.fasulye-end-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.fasulye-end-winner {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #fbbf24;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.fasulye-end-info {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.fasulye-end-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 48rem;
+}
+
+@media (min-width: 768px) {
+  .fasulye-end-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- Summary Card --- */
+.fasulye-summary-card {
+  border-radius: 1rem;
+  width: 24rem;
+  height: 24rem;
+  padding: 2.5rem 1rem 1rem 1rem;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fasulye-summary-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.fasulye-summary-stats {
+  margin-top: 0.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+.fasulye-summary-stat {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0.5rem;
+}
+
+/* --- End Buttons --- */
+.fasulye-end-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.fasulye-end-back {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-end-back:hover {
+  background-color: white;
+}
+
+.fasulye-end-new {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fasulye-end-new:hover {
+  background-color: #4338ca;
+}

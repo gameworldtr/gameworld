@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ONLY apply Tailwind base reset to main menu */
+@layer base {
+  .main-menu-wrapper {
+    @apply min-h-screen;
+  }
+}
+
+/* Prevent any global resets */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
